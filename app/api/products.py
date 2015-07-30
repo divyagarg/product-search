@@ -13,8 +13,6 @@ from app.decorators import jsonify, logrequest, logtime
 def products_search():
     query = request.args.get('q')
     params      = {}
-    ret = {
-        'status' : 0,
-        'msg' : 'Successful'
-    }
+    f = open(os.path.join(os.getcwd(), 'data', 'product_search_results.json'), 'r')
+    ret = json.loads(f.read())
     return ret
