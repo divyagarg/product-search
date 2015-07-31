@@ -16,7 +16,7 @@ query_object_structure = {
         }, required=True)
 }
 
-@api.route('/search/products/', methods = ['POST'])
+@api.route('/search/products', methods = ['POST', 'GET'])
 @jsonify
 @logrequest
 def products_search():
