@@ -20,7 +20,7 @@ query_object_structure = {
 @jsonify
 @logrequest
 def products_search():
-    params      = parser.parse(query_object_structure, request)
+    #params      = parser.parse(query_object_structure, request)
     f = open(os.path.join(os.getcwd(), 'data', 'product_search_results.json'), 'r')
     ret = json.loads(f.read())
     return ret
