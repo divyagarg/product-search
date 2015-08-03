@@ -1,11 +1,13 @@
 import random
 import json
+import loremipsum
 
 available_brands = ['samsung', 'sony', 'apple', 'nokia', 'motorola', 'adidas', 'nike']
 available_categories = ['mobile phones', 'electronics', 'gadgets', 'house hold', 'furniture', 'laptops', 'cameras']
 
 available_product_titles = ['iPhone 5', 'Samsung Galaxy S4', 'Xiaomi mi4i', 'Samsung Gear']
 available_variant_titles = ['iPhone 5 16 GB', 'iPhone 5 32 GB', 'Samsung Galaxy S4 32 GB', 'Xiaomi mi4i Red', 'Samsung Gear black']
+
 
 def get_random_item(name):
   ind = random.randint(0, len(name)-1)
@@ -37,19 +39,19 @@ class Variant:
     self.productId = productId
     self.variantId = random.randint(10000000, 99999999)
     self.title = get_random_item(available_variant_titles)
-    self.subscriptions = [Subscription(productId = self.productId, variantId = self.variantId) for i in range(6)]
+    self.offers = [Offer(productId = self.productId, variantId = self.variantId) for i in range(6)]
     self.media = [Media() for i in range(2)]
     self.attributes = [
       {'name' : 'RAM', 'display' : 'Memory', 'values' : [32], 'filter' : True, 'unit' : 'GB'}
     ]
   def __update_fields(self):
-    # ugly hack. ideally a subscription manager should handle it
-    self.subscriptions[0].buyBox = True
+    # ugly hack. ideally a offer manager should handle it
+    self.offers[0].buyBox = True
     self.media[0].default = True
 
-class Subscription:
+class Offer:
   def __init__(self, productId, variantId):
-    self.subscriptionId = random.randint(10000000, 99999999)
+    self.offerId = random.randint(10000000, 99999999)
     self.variantId = variantId
     self.productId = productId
     self.basePrice = random.randint(40000, 50000)
@@ -148,9 +150,9 @@ class Product:
     self.userRating = random.randint(1,5)
     self.expertRating = random.randint(1,5)
     self.ratingCount = random.randint(1,100)
-    self.description = 'blah'
-    self.features = 'blah'
-    self.specification = 'blah'
+    self.description = loremipsum.get_paragraph()
+    self.features =  loremipsum.get_paragraph()
+    self.specification = loremipsum.get_paragraph()
     self.attributeGroups = [AttributeGroup() for i in range(3)]
     self.__update_fields()
 
