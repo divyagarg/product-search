@@ -7,7 +7,12 @@ available_categories = ['mobile phones', 'electronics', 'gadgets', 'house hold',
 
 available_product_titles = ['iPhone 5', 'Samsung Galaxy S4', 'Xiaomi mi4i', 'Samsung Gear']
 available_variant_titles = ['iPhone 5 16 GB', 'iPhone 5 32 GB', 'Samsung Galaxy S4 32 GB', 'Xiaomi mi4i Red', 'Samsung Gear black']
-
+available_images = [
+  'http://media.askmebazaar.com/media/catalog/product/s/h/shikha-10april-068scooty2.jpg',
+  'http://media.askmebazaar.com/media/catalog/product/s/r/srinanti-10-mar-15-32.jpg',
+  'http://media.askmebazaar.com/media/catalog/product/a/s/asusxx553ma-sx376bpentiumquadcore-4gbddr3500gbhddnotebook.jpg',
+  'http://media.askmebazaar.com/media/catalog/product/c/g/cg-4dec14-27.jpg'
+]
 
 def get_random_item(name):
   ind = random.randint(0, len(name)-1)
@@ -62,7 +67,7 @@ class Offer:
     self.payment = {'mode' : ['pay-now', 'pay-later']}
     self.nddCities = ['delhi']
     self.merchant = Merchant()
-    self.buyBox = False #one sunscription will have buy box true
+    self.buyBox = False #one subscription will have buy box true
     self.shippingTimeHours = 12
     self.leadTimeHours = 12
     self.cod = True
@@ -72,7 +77,7 @@ class Media:
     self.id = random.randint(10000000, 99999999)
     self.default = False
     self.variants = [
-      {'size' : 'thumb', 'height' : 200, 'width' : 200, 'dpi' : 120, 'url' : 'http://media.askmebazaar.com/media/catalog/product/thumbnails/150x150/i/n/in_efc-1j9fbeginu_000030182_front1_white.jpg'},
+      {'size' : 'thumb', 'height' : 200, 'width' : 200, 'dpi' : 120, 'url' : get_random_item(available_images)},
     ]
 
 class Location:
